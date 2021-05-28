@@ -6,8 +6,11 @@ var logger = require('morgan');
 var cors = require('cors');
 const router = require('./route');
 
+const port = process.env.PORT || 8000;
 
 var app = express();
+
+app.set("port", port);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -23,8 +26,8 @@ app.get('/', function (req, res) {
 
 app.use('/api/v1', router);
 
-const port = 8000 || process.env.PORT;
+
 
 app.listen(port, function () {
-   console.log("App listening at port 8000")
+   console.log("App listening on port 8000")
 })
