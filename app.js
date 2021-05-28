@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -22,9 +23,8 @@ app.get('/', function (req, res) {
 
 app.use('/api/v1', router);
 
-var server = app.listen(8000, function () {
-   var host = server.address().address
-   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port)
+const port = 8000 || process.env.PORT;
+
+app.listen(port, function () {
+   console.log("App listening at port 8000")
 })
