@@ -1,8 +1,8 @@
 var axios = require('axios');
 let token = 'NJ06A666-741F-484E-AEC9-8B91D2CP'
-async function subscribe(msisdn, ServiceID, ChannelID) {
+async function subscribe(msisdn, serviceid, channel) {
   try {
-      const info = { msisdn, ServiceID, ChannelID };
+      const info = { msisdn, serviceid, channel };
       const options = {
           headers: { 'X-TOKEN': token, 'CPID': '11' }
       };
@@ -10,7 +10,7 @@ async function subscribe(msisdn, ServiceID, ChannelID) {
       if(response.data.status === false){
         return { status: 400, msg: response.data.message };
       }
-      return {status: 200, token: token, data: response.data};
+      return {status: 200, data: response.data};
   } catch (error) {
     throw Error(error);
   }
