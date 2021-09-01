@@ -12,11 +12,11 @@ async function subscribe(msisdn, serviceid, channel) {
       const trackServiceFifty = "LN50";
       const tracktrxid = `${date}-ayoba-${Math.floor(Math.random() * 10000)}`;
       const trackInfo = {msisdn, channel: trackChannel, service: info.serviceid == 526 ? trackServiceTen : trackServiceFifty, trxid: tracktrxid};
-      //Stops here
-      
       const trackOptions = {
         headers: { 'Content-Type': 'application/json'}
       };
+      //Stops here
+      
       const options = {
         headers: { 'X-TOKEN': token, 'CPID': '11' }
       };
