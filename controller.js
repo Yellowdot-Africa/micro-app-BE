@@ -2,7 +2,7 @@ require('dotenv').config();
 const { format } = require('date-fns');
 var axios = require('axios');
 let token = 'NJ06A666-741F-484E-AEC9-8B91D2CP';
-const regexMTNNumber = /234((7025\d{6})|(7026\d{6})|(703\d{7})|(704\d{7})|(706\d{7})|(803\d{7})|(806\d{7})|(810\d{7})|(813\d{7})|(814\d{7})|(816\d{7})|(903\d{7})|(906\d{7}))/;
+const regexMTNNumber = /234((7025\d{6})|(7026\d{6})|(703\d{7})|(704\d{7})|(706\d{7})|(803\d{7})|(806\d{7})|(810\d{7})|(813\d{7})|(814\d{7})|(816\d{7})|(903\d{7})|(906\d{7})|(916\d{7})|(913\d{7}))/;
 
 async function subscribe(pisipid, msisdn, channel, trxid) {
   try {
