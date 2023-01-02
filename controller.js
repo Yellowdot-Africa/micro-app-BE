@@ -8,9 +8,6 @@ async function subscribe(pisipid, msisdn, channel, trxid) {
   try {
       if (msisdn.match(regexMTNNumber)) {
         const info = { pisipid, msisdn, channel, trxid };
-        console.log('====================================');
-        console.log(info);
-        console.log('====================================');
         // Details to track msisdn coming from Ayoba
         const date = format(new Date(), 'yyyyMMdd');
         const trackChannel = "AyobaM";
