@@ -8,6 +8,9 @@ async function subscribe(pisipid, msisdn, channel, trxid) {
   try {
       if (msisdn.match(regexMTNNumber)) {
         const info = { pisipid, msisdn, channel, trxid };
+        console.log('====================================');
+        console.log(info);
+        console.log('====================================');
         // Details to track msisdn coming from Ayoba
         const date = format(new Date(), 'yyyyMMdd');
         const trackChannel = "AyobaM";
@@ -27,12 +30,12 @@ async function subscribe(pisipid, msisdn, channel, trxid) {
         }
         };
         const response = await axios.post(process.env.PISIMOBILE_SUBSCRIPTION_URL, info, options);
-        if (response.data.success === true && response.data.message === 'Successful') {
+        if (response.data.success == true && response.data.message == 'Successful') {
           let trackResponse = await axios.post('https://promo.ydafrica.com/sync/tracking/microayoba_req', trackInfo, trackOptions);
           // trackResponse.data returns data: {status: 'success'}
           return { status: 200, msg: 'Successful, kindly select "Accept Renewal" to qualify' };
         }
-        if (response.data.success === false && response.data.message === 'You have Already Subscribed Requested Services') {
+        if (response.data.success == false && response.data.message == 'You have Already Subscribed Requested Services') {
           return { status: 400, msg: 'User is already subscribed to the service' };
         }
         else {
@@ -43,7 +46,7 @@ async function subscribe(pisipid, msisdn, channel, trxid) {
         return { status: 403, msg: 'Sorry, This service is restricted to MTN Nigeria Phone Numbers only' };
       }
   }catch (error) {
-    return {status: error.response.status, msg: error.response.data};
+    return {status: error.response.status, msg: error.response.data.message};
   }
 }
 
